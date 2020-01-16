@@ -1,4 +1,4 @@
-function deepClone1(obj) {
+function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') return obj;
     var result = Array.isArray(obj) ? [] : {};
 
@@ -6,7 +6,7 @@ function deepClone1(obj) {
     const sym = Object.getOwnPropertySymbols(obj);
     sym.forEach(function (item) {
         if (Object.prototype.toString.call(obj[item]) === '[object Object]') {
-            result[item] = deepClone1(obj[item]);
+            result[item] = deepClone(obj[item]);
         } else {
             result[item] = obj[item];
         }
@@ -15,7 +15,7 @@ function deepClone1(obj) {
     // 拷贝其他值
     for (var key in obj) {
         if (Object.prototype.toString.call(obj[key]) === '[object Object]') {
-            result[key] = deepClone1(obj[key]);
+            result[key] = deepClone(obj[key]);
         } else {
             result[key] = obj[key];
         }
@@ -25,13 +25,13 @@ function deepClone1(obj) {
 }
 
 // ES6
-function deepClone2(obj) {
+function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') return obj;
     let result = Array.isArray(obj) ? [] : {};
 
     Reflect.ownKeys(obj).forEach(item => {
         if (Object.prototype.toString.call(obj[item]) === '[object Object]') {
-            result[item] = deepClone2(obj[item]);
+            result[item] = deepClone(obj[item]);
         } else {
             result[item] = obj[item];
         }

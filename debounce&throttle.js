@@ -1,9 +1,10 @@
-function debounce(callback, delay) {
+function debounce(callback, delay, immediate) {
     let timer = null;
     return function() {
         const context = this,
             args = arguments;
         timer && clearTimeout(timer);
+        immediate && !timer && callback.apply(context, args); // 首次立即触发
         timer = setTimeout(function() {
             callback.apply(context, args);
         }, delay);

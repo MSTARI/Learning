@@ -3,3 +3,4 @@
 2. debounce&throttle 防抖和节流
 3. deepClone 深拷贝
 4. instanceof 实现原生instanceof
+5. new 实现原生new
